@@ -1,9 +1,6 @@
 @charset 'UTF-8';
 
 
-header {
-    width: 100%;
-}
 .nav_container {
     display: flex;
     flex-direction: row;
@@ -19,12 +16,21 @@ header {
     margin-right: 1em;
 }
 
-/*
-#title_div {
-    position: relative;
-    left: 0%;
+
+.slider {
+    max-width: 1000px;
+    height: 500px;
+    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+    background-color: white;
 }
-*/
+
+.slide {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
 
 body {
     outline: 2px solid red;
