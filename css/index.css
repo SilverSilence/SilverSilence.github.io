@@ -1,6 +1,5 @@
 @charset 'UTF-8';
 
-
 .nav_container {
     display: flex;
     flex-direction: row;
@@ -20,9 +19,6 @@
 .slider {
     max-width: 1000px;
     height: 500px;
-    margin: 1em auto;
-    display: flex;
-    justify-content: center;
     background-color: white;
 }
 
@@ -30,9 +26,69 @@
     max-height: 100%;
     max-width: 100%;
     object-fit: cover;
+    align-self: center;
 }
 
 body {
     outline: 2px solid red;
     background-color: white;
+}
+
+.show_off_container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.show_off_container > div {
+    margin: auto;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+
+.fibonacci_clock {
+    width: 100%;
+    max-width: 1000px;
+    height: 500px;
+    background-color: black;
+    /*border: 5px solid rgb(85, 85, 243);*/
+    position: relative;
+}
+
+.clock_item {
+    outline: 3px solid black;
+    text-align: center;
+    background-color: aqua;
+    position: absolute;
+}
+
+.size_one {
+    width: 12.5%;
+    height: 20%;
+    left: 25%;
+}
+
+.second_area {
+    top: 20%;
+}
+
+.size_two {
+    width: 25%;
+    height: 40%;
+    left: 0%;
+    top: 0%;
+}
+
+.size_three {
+    width: 37.5%;
+    height: 60%;
+    left: 0%;
+    bottom: 0%;
+}
+
+.size_five {
+    width: 62.5%;
+    height: 100%;
+    right: 0%;
 }
