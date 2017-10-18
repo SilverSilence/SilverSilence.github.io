@@ -106,7 +106,7 @@ function updateMinuteColors(now){
     let minutes = now.getMinutes();
     let targetValue = Math.floor(minutes / 5);
     
-    let indices = getIndicesOfBoxesToHighlight(targetValue);
+    let indices = targetValue ? getIndicesOfBoxesToHighlight(targetValue) : [];
     for (let index of indices){
         boxes[index].selectedForMinute = true;
         setStateOfBox(boxes[index]);
