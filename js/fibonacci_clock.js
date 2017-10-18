@@ -98,6 +98,7 @@ function resetColorsAndState() {
         box.selectedForHour = false;
         box.selectedForMinute = false;
         box.state = "neutral";
+        changeColorOfBox(box);
     }
 };
 
@@ -117,7 +118,7 @@ function updateHourColors(now){
     let hours = now.getHours();
     let targetValue = hours > 12 ? hours - 12 : hours;
     
-    let indices = getIndicesOfBoxesToHighlight(targetValue);
+    let indices = hours ? getIndicesOfBoxesToHighlight(targetValue) : [];
     for (let index of indices){
         boxes[index].selectedForHour = true;
         setStateOfBox(boxes[index]);
@@ -142,19 +143,11 @@ function getIndicesOfBoxesToHighlight(targetValue){
     let indices = possibleCombinations[Math.floor(Math.random()*possibleCombinations.length)].slice();
 
     //check if both 1-boxes are needed
-    let indexOfOne = -1;
-    for (let index=0; index < indices.length; index++){
-        if (indices[index] === 1) {
-            indexOfOne = index;
-            break;
-        }
-    }
-
-    if (indexOfOne > -1){
-        indices[indexOfOne] = Math.round(Math.random());
+    if (new Set(indices) !== indices) {
+        indices[0] = 0;
     }
     var boxIndices = indices.map((x) => x == 5 ? 4 : x);
     return boxIndices;
 };
-
+updateClockDisplay(new Date());
 runClock();
