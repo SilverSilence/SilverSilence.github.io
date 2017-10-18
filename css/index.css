@@ -59,7 +59,7 @@ body {
 .clock_item {
     outline: 3px solid black;
     text-align: center;
-    background-color: aqua;
+    background-color: white;
     position: absolute;
 }
 
