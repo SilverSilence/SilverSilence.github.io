@@ -1,4 +1,6 @@
 /*--------- Variables --------- */
+var firstGame = true;
+var score = 0;
 var rows = 20;
 var columns = 30;
 var fieldSize = rows * columns;
@@ -9,13 +11,15 @@ var directions = {
     39: "right"
 };
 
-var snake = {
-    direction: "up",
-    queue: [],
-    ids: [],
-    head: {},
-    tail: {},
-};
+function Snake() {
+    this.direction= "up";
+    this.queue= [];
+    this.ids= [];
+    this.head= {};
+    this.tail= {};
+}
+
+var snake = new Snake();
 
 var colors;
 var gameLoop;
@@ -78,10 +82,12 @@ function makeHead(field) {
 
 function bodyWidth() {
     var width = columns * squareSize;
-    document.body.style["max-width"] = width + "px";
+    let container = document.getElementsByClassName("snake_container")[0];
+    container.style["max-width"] = width + "px";
 }
 
 function initSnake() {
+    snake = new Snake();
     var center = document.getElementById(Math.floor((fieldSize + columns) / 2));
     setupHead(center);
     setupTail(center);
@@ -152,18 +158,23 @@ function colorSnake() {
 function checkCollision() {
     if ((snake.queue.length > 1 && snake.ids.lastIndexOf(snake.head.id) > 0)) {
         clearInterval(gameLoop);
-        alert("You collided. Game Over.");
+        alert("You collided. Game Over.\nYour score was: " + score);
+        score = 0;
+        toggleButton();
     }
     var dir = snake.head.getAttribute("dir");
     if (dir && dir === snake.direction) {
         clearInterval(gameLoop);
-        alert("You collided with border. Game Over.");
+        alert("You collided with border. Game Over.\nYour score was: " + score);
+        score = 0;
+        toggleButton();
     }
 }
 
 function checkFood(nextHead) {
     ateFood = nextHead.id === foodField.id;
     if (ateFood) {
+        score++;
         removeFoodClass();
         createFood();
     }
@@ -231,6 +242,26 @@ function setupTat() {
     });
 }
 
+function toggleButton() {
+    let button = document.getElementById("start_snake");
+    if (button.style.display === "none") {
+        button.style.display = "block";
+    } else {
+        button.style.display = "none";
+        let board = document.getElementsByClassName("snake_container")[0];
+        while (board.children.length > 1) {
+            board.removeChild(board.lastChild);
+        }
+        setup();
+    }
+}
+
+function setupStartGameButton() {
+    let button = document.getElementById("start_snake");
+    button.style.display = "block";
+    button.onclick = toggleButton;
+}
+
 function setup() {
     bodyWidth();
     drawField();
@@ -258,7 +289,7 @@ function markBorder() {
 }
 
 function drawField() {
-    var body = document.body;
+    let container = document.getElementsByClassName("snake_container")[0];
     for (var i = 0; i < fieldSize; i++) {
         var div = document.createElement("div");
         div.id = i;
@@ -267,17 +298,21 @@ function drawField() {
         div.classList.add("field");
         div.style.width = squareSize + "px";
         div.style.height = squareSize + "px";
-        body.appendChild(div);
+        container.appendChild(div);
     }
-};
+}
 
-document.addEventListener('DOMContentLoaded', setup, false);
 
 //Desktop Controls
 document.onkeydown = function(e) {
     e = e || window.event;
     var charCode = (typeof e.which == "number") ? e.which : e.keyCode;
     if([37,38,39,40].includes(parseInt(charCode))) {
+        e.preventDefault();
         snake.direction = directions[charCode.toString()];
     }
 };
+
+bodyWidth();
+drawField();
+setupStartGameButton();
