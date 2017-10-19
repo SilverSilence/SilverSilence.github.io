@@ -1,5 +1,22 @@
 @charset 'UTF-8';
 
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+.description {
+    display: flex;
+    width: 50%;
+}
+
+.separator {
+    height: 5px;
+    background-color: rgb(202, 190, 190);
+    opacity: 0.1;
+    width: 100%;
+}
+
 .nav_container {
     display: flex;
     flex-direction: row;
@@ -44,8 +61,8 @@ body {
     margin: auto;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
+    background-color: rgb(0,0,0);
 }
-
 
 .fibonacci_clock {
     width: 100%;

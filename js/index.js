@@ -12,6 +12,6 @@ window.onload = function () {
     sliderID= setInterval(function() {
         index = 1 + (index % 13);
         imageTag.src = pathPrefix + index + endings[index-1];
-    }, 10000);
+    }, 3000);
     
 }

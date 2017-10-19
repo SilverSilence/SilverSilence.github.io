@@ -79,12 +79,10 @@ let stateToColor = {
 
 //Checks if the clock needs to be updated every minute
 function runClock() {
-    let now = new Date();
-    let timeToNextTick = (60 - now.getSeconds()) * 1000 - now.getMilliseconds();
-    setTimeout(function() {
+    setInterval(function() {
+        let now = new Date();
         updateClockDisplay(now);
-        runClock();
-    }, timeToNextTick);
+    },60*1000);
 };
 
 function updateClockDisplay(now) {
