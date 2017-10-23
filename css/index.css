@@ -1,6 +1,15 @@
 @charset 'UTF-8';
 
 
+* {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+body {
+    outline: 2px solid black;
+    background-color: white;
+}
+
 h1, h2, h3 {
     text-align: center;
 }
@@ -28,17 +37,26 @@ button {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    background-color: darkslategray; 
+    background-color: white; 
     width: 100%;
 }
 
-.nav_div {
-    width: auto;
-    border: 0.5em solid black;
-    padding: 1em;
-    margin-right: 1em;
+#binary_bar {
+    width: 100%;
 }
 
+.nav_container {
+    width: auto;
+    border: 0.5em solid black;
+}
+
+
+.nav_div {
+    border: 0.25em solid black;
+    padding: 2em;
+    display: inline-block;
+    height: 20px;
+}
 
 .slider {
     max-width: 1000px;
@@ -51,12 +69,6 @@ button {
     max-width: 100%;
     object-fit: cover;
     align-self: center;
-}
-
-body {
-    outline: 2px solid red;
-    background-color: white;
-    
 }
 
 .show_off_container {

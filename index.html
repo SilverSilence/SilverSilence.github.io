@@ -7,20 +7,22 @@
   <title>Silver's Website</title>
   <meta name="description" content="My personal Projects">
   <meta name="author" content="SilverSilence">
-  <script src="js/index.js"></script>
   <script src="js/tiltandtap.js"></script>
   <link rel="stylesheet" href="css/index.css?v=1.0">
   <link rel="stylesheet" href="css/snake.css?v=1.0">
   <link rel="stylesheet" href="css/flappy.css?v=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
 </head>
 
 <body>
     <header>
         <nav class="nav_container">
-    <!--        <div id="title_div"><h1>Welcome!</h1></div>    -->
+            <canvas class="nav_div" id="binary_bar"></canvas>
             <div class="nav_div"><a>Home</a></div>
             <div class="nav_div"><a>About Me</a></div>
         </nav>
+        <script src="js/binary.js">
+        </script>
     </header>
     <h1>Welcome To My Website!</h1>
     <div class="description">
@@ -28,10 +30,11 @@
     </div>
     <div class="show_off_container">
         <div class="separator"></div>
-        <h2>Boring Slider</h2>
+        <h2>Image Slider</h2>
         <div class="slider">
-            <img class="slide">
+            <img class="slide" src="resources/images/slide_show/7.jpg">
         </div>
+        <script src="js/slider.js"></script>
         <div class="separator"></div>
         <h2>Fibonacci Clock</h2>
         <div class="fibonacci_clock">
@@ -45,7 +48,9 @@
         <h2>Play A Game Of Snake</h2>
         <div class="snake_wrapper">
             <div class="snake_container">
-                    <button id="start_snake">Begin Game</button>
+                    <button id="start_snake">Begin Game
+                        <br>(Use Arrow Keys)
+                    </button>
             </div>
         </div>
         <script src="js/snake.js"></script>
@@ -53,7 +58,9 @@
         <h2>Play a Game Of Flappy Bird</h2>
         <div class="flappy_bird_wrapper">
             <div class="flappy_bird_container">
-                <button id="start_flappy">Begin Game</button>
+                <button id="start_flappy">Begin Game
+                    <br>(Use Space Bar)
+                </button>
                 <canvas id="world" width="1000" height="800"></canvas>
             </div>
         </div>
