@@ -11,6 +11,7 @@
   <script src="js/tiltandtap.js"></script>
   <link rel="stylesheet" href="css/index.css?v=1.0">
   <link rel="stylesheet" href="css/snake.css?v=1.0">
+  <link rel="stylesheet" href="css/flappy.css?v=1.0">
 </head>
 
 <body>
@@ -18,7 +19,6 @@
         <nav class="nav_container">
     <!--        <div id="title_div"><h1>Welcome!</h1></div>    -->
             <div class="nav_div"><a>Home</a></div>
-            <div class="nav_div"><a href="Snake/index.html">Javascript Games</a></div>
             <div class="nav_div"><a>About Me</a></div>
         </nav>
     </header>
@@ -50,11 +50,23 @@
         </div>
         <script src="js/snake.js"></script>
         <div class="separator"></div>
+        <h2>Play a Game Of Flappy Bird</h2>
         <div class="flappy_bird_wrapper">
-            <div class="flappy_bird_container"></div>
+            <div class="flappy_bird_container">
+                <button id="start_flappy">Begin Game</button>
+                <canvas id="world" width="1000" height="800"></canvas>
+            </div>
         </div>
+        <script src="js/flappy.js"></script>
     </div>
-        
+        <script>
+            //Desktop Controls (Note: real ugly solution)
+            document.onkeydown = function(e) {
+                e = e || window.event;
+                snakeControl(e);
+                flappyControls(e);
+            };
+        </script>
         <footer>
             <nav>
                 Contact Me at:

@@ -1,7 +1,10 @@
 #world {
     background-color: black;
     width: 1000px;
-    height: 400px;
-    outline: 2px solid white;
+    height: 800px;
+    position: relative;
+}
+
+.flappy_bird_wrapper {
     position: relative;
 }

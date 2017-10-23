@@ -5,6 +5,13 @@ h1, h2, h3 {
     text-align: center;
 }
 
+button {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 2em;
+}
+
 .description {
     display: flex;
     width: 50%;

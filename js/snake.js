@@ -155,9 +155,10 @@ function colorSnake() {
     }
 }
 
-function checkCollision() {
+function checkCollisionWithfoodOrBorder() {
     if ((snake.queue.length > 1 && snake.ids.lastIndexOf(snake.head.id) > 0)) {
         clearInterval(gameLoop);
+        console.log("Cleared interval with id:" + gameLoop + " from game Snake.")
         alert("You collided. Game Over.\nYour score was: " + score);
         score = 0;
         toggleButton();
@@ -165,6 +166,7 @@ function checkCollision() {
     var dir = snake.head.getAttribute("dir");
     if (dir && dir === snake.direction) {
         clearInterval(gameLoop);
+        console.log("Cleared interval with id:" + gameLoop + " from game Snake.")
         alert("You collided with border. Game Over.\nYour score was: " + score);
         score = 0;
         toggleButton();
@@ -180,9 +182,10 @@ function checkFood(nextHead) {
     }
 }
 
-function initGameLoop() {
+function initGameLoopSnake() {
     gameLoop = setInterval(function () {
-        checkCollision();
+        checkCollisionWithfoodOrBorder
+    ();
         var nextHead = getNextHead();
         checkFood(nextHead);
         moveSnake(nextHead);
@@ -252,7 +255,7 @@ function toggleButton() {
         while (board.children.length > 1) {
             board.removeChild(board.lastChild);
         }
-        setup();
+        setupSnake();
     }
 }
 
@@ -262,7 +265,7 @@ function setupStartGameButton() {
     button.onclick = toggleButton;
 }
 
-function setup() {
+function setupSnake() {
     bodyWidth();
     drawField();
     markBorder();
@@ -270,7 +273,7 @@ function setup() {
     setupTat();
     getBaseColor();
     createFood();
-    initGameLoop();
+    initGameLoopSnake();
 };
 
 function markBorder() {
@@ -302,16 +305,13 @@ function drawField() {
     }
 }
 
-
-//Desktop Controls
-document.onkeydown = function(e) {
-    e = e || window.event;
+function snakeControl(e) {
     var charCode = (typeof e.which == "number") ? e.which : e.keyCode;
     if([37,38,39,40].includes(parseInt(charCode))) {
         e.preventDefault();
         snake.direction = directions[charCode.toString()];
     }
-};
+}
 
 bodyWidth();
 drawField();
