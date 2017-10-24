@@ -1,7 +1,18 @@
 var binaryCanvas = document.getElementById("binary_bar");
 function startBinaryHeader(){
-    //Set intrinsic Canvas size
-    
+     
+    setupBinaryCanvas();
+    setupCanvasContext();
+    startDrawingLoop();
+}
+
+function setupCanvasContext(){
+    let binaryCtx = binaryCanvas.getContext('2d');
+    binaryCtx.font = '35px Josefin Sans';
+    binaryCtx.textBaseline = 'hanging';
+}
+
+function setupBinaryCanvas(){
     let rect = binaryCanvas.getBoundingClientRect();
     binaryCanvas.width = rect.width;
     binaryCanvas.height = rect.height;
@@ -10,19 +21,11 @@ function startBinaryHeader(){
     binaryCanvas.centerTextHeight = binaryCanvas.height / 2;
     binaryCanvas.appendNewRandomNumber = appendNewRandomNumber;
     binaryCanvas.textToWrite = "";
-    binaryCanvas.overFlowMargin = 50;
     binaryCanvas.appendNewRandomNumber();
-
-    //Get and setup context for drawing
-    let binaryCtx = binaryCanvas.getContext('2d');
-    binaryCtx.font = '35px Josefin Sans';
-    binaryCtx.textBaseline = 'hanging';
-    
-    startDrawingLoop();
 }
 
 function startDrawingLoop() {
-    let interValID = setInterval(updateStep, 200);
+    let interValID = setInterval(updateStep, 500);
 }
 
 function cutText(text){
@@ -48,7 +51,6 @@ function updateStep(){
     clearCanvas(binaryCtx);
     writeTextToCanvas(binaryCtx);
 }
-
 
 function appendNewRandomNumber(){
     let randomNumber = Math.round(Math.random()).toString();
