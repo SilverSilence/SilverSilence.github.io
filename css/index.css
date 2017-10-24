@@ -37,6 +37,8 @@ button {
     padding: 0em;
     width: 80%;
     overflow: hidden;
+    right: 20%;
+    outline: none;
 }
 
 .nav_container {
@@ -47,6 +49,14 @@ button {
     position: relative;
 }
 
+.nav_container :nth-child(2) {
+    right: 10%;
+}
+
+.nav_container :last-child{
+    right: 0%;
+}
+
 .nav_div > p {
     vertical-align: middle;
 }
@@ -54,7 +64,7 @@ button {
 .nav_div {
     width: 10%;
     height: 100%;
-    float: left;
+    position: absolute;
     text-align:center;
     margin: 0px auto 0px auto;     
     outline: 0.25em solid black;
