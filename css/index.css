@@ -30,10 +30,6 @@ button {
     font-size: 2em;
 }
 
-.description {
-
-}
-
 .separator {
     height: 5px;
     background-color: rgb(202, 190, 190);
@@ -43,9 +39,9 @@ button {
 
 #binary_bar {
     padding: 0em;
-    width: 80%;
+    width: 90%;
     overflow: hidden;
-    right: 20%;
+    right: 10%;
     outline: none;
 }
 
@@ -56,10 +52,10 @@ button {
     height: 50px;
     position: relative;
 }
-
+/*
 .nav_container :nth-child(2) {
     right: 10%;
-}
+}*/
 
 .nav_container :last-child{
     right: 0%;
