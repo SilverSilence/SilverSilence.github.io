@@ -1,10 +1,26 @@
-let binaryCanvas = document.getElementById("binary_bar");
-let parent = document.getElementsByClassName("nav_container")[0];
-binaryCanvas.height = parent.getBoundingClientRect().height;
-binaryCanvas.width = parent.getBoundingClientRect().width;
+function startBinaryHeader(){
+    //Sets intrinsic Canvas size
+    let binaryCanvas = document.getElementById("binary_bar");
+    let rect = binaryCanvas.getBoundingClientRect();
+    binaryCanvas.width = rect.width;
+    binaryCanvas.height = rect.height;
+    binaryCanvas.counterToNextNumber
+    //Get context for drawing
+    let binaryCtx = binaryCanvas.getContext('2d');
+    
+    binaryCtx.font = '20px Josefin Sans';
+    binaryCtx.textBaseline = 'top';
+    binaryCtx.fillText("Test", 0, binaryCanvas.height/2);
+}
 
-let binaryCtx = binaryCanvas.getContext('2d');
-let numberHeight = (binaryCanvas.height - 10)+"px" ;
+function startDrawingLoop() {
+    let interValID = setInterval(updateCanvas(), 1000/70);
+}
 
-binaryCtx.font = numberHeight;
-binaryCtx.strokeText("Test");
+function updateCanvas(){
+
+}
+
+
+
+startBinaryHeader();
