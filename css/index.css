@@ -18,6 +18,15 @@ h1, h2, h3 {
     text-align: center;
 }
 
+a:visited {
+    color: black;
+}
+
+a {
+    text-decoration: none;
+}
+
+
 p {
     font-size: 1.5em;
     text-align: center;
@@ -39,9 +48,9 @@ button {
 
 #binary_bar {
     padding: 0em;
-    width: 90%;
+    width: 80%;
     overflow: hidden;
-    right: 10%;
+    right: 20%;
     outline: none;
 }
 
@@ -52,10 +61,10 @@ button {
     height: 50px;
     position: relative;
 }
-/*
+
 .nav_container :nth-child(2) {
     right: 10%;
-}*/
+}
 
 .nav_container :last-child{
     right: 0%;
