@@ -138,10 +138,11 @@ function getIndicesOfBoxesToHighlight(targetValue){
     //Get combination and with it the boxes that have to change color:
     let possibleCombinations = combinations[targetValue].slice();
     //Pick a possible combination randomly
-    let indices = possibleCombinations[Math.floor(Math.random()*possibleCombinations.length)].slice();
-
+    let randomNumber = Math.floor(Math.random()*possibleCombinations.length);
+    let indices = possibleCombinations[randomNumber].slice();
+    console.log(indices);
     //check if both 1-boxes are needed
-    if (new Set(indices) !== indices) {
+    if ((new Set(indices)).size !== indices.length) {
         indices[0] = 0;
     }
     var boxIndices = indices.map((x) => x == 5 ? 4 : x);
