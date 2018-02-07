@@ -1,0 +1,68 @@
+<html hola_ext_inject="disabled"><head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.4, maximum-scale=0.4, user-scalable=no">
+<title> Ball 2d Mapped Container </title>
+    <title>Ball 2d Mapped Container</title>
+<script src="../../Controller.js"></script>
+<script src="../../classedMoveTypes.js"></script>    
+<script src="../../TaT_Plugin.js"></script>
+<link rel="stylesheet" type="text/css" href="style_ball2d.css">
+</head>
+    
+<style>
+    .my_class {  
+        width : 50px; 
+        height: 50px;
+        background-color: red;
+        border-radius: 100%;
+        left: 50%;
+        top : 50%;
+        position: absolute;
+    }
+</style>
+<body>
+
+    <div id="container">
+        <div id="elem1" class="elem"></div>
+        <div id="elem2" class="elem"></div>
+        <div id="elem3" class="elem"></div>
+        <div id="elem5" class="elem"></div>
+        <div id="elem6" class="elem"></div>
+    </div>
+    
+<script>
+    var container = document.getElementById("container");
+    var plugin = new TiltAndTap();
+    var moveType = 
+        {
+            name : 'mappedContainerMove',
+            settings : {
+                zone: {
+                    type: 'angles', //rotationrate, acceleration, angles
+                    vertical: [-15,15],
+                    horizontal: [-15,15], /*
+                    type: 'acceleration',
+                    vertical: [-1,1],
+                    horizontal: [-1,1] */
+                }
+            }
+        };
+    
+    var my_elements = document.getElementsByClassName("elem");
+    
+    var my_callback = function (element) {
+        element.style["background-color"] = 'green';
+    }
+    
+    var ball = plugin.TwoDimensionalTilt('my_class', container, moveType, false, my_elements, my_callback);
+</script>
+     <p id="description">
+        This movement type is very responsive. Even to the point where it might feel annoying because it reacts to the smallest of movements, thus there's the possibility that it is perceived as flickering. </br>
+        What is done here behind the scenes is that the current angles are compared to their respective 'zone intervals'. The relative position of the angle in the interval is then used as the relative position for the ball inside the container. Let's say your horizontal angle is exactly in the middle of the horizontal zone, then the ball will be in the horizontal center of the container.
+    </p>
+    <p>
+        One could suggest to not move when the difference between the old and new position is too small.
+        This might probably give the user a less hectic feeling, therefore improving user experience.
+    </p>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<html hola_ext_inject="disabled"><head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.4, maximum-scale=0.4, user-scalable=no">
+<title> Ball 2d Static Acceleration </title>
+    <title>Ball 2d Static Acceleration</title>
+<script src="../../Controller.js"></script>
+<script src="../../classedMoveTypes.js"></script>    
+<script src="../../TaT_Plugin.js"></script>
+<link rel="stylesheet" type="text/css" href="style_ball2d.css">
+</head>
+    
+<style>
+    .my_class {  
+        width : 50px; 
+        height: 50px;
+        background-color: red;
+        border-radius: 100%;
+        left: 50%;
+        top : 50%;
+        position: absolute;
+    }
+</style>
+<body>
+
+    <div id="container">
+        <div id="elem1" class="elem"></div>
+        <div id="elem2" class="elem"></div>
+        <div id="elem3" class="elem"></div>
+        <div id="elem5" class="elem"></div>
+        <div id="elem6" class="elem"></div>
+    </div>
+    
+<script>
+    var container = document.getElementById("container");
+    var plugin = new TiltAndTap();
+    var moveType = 
+        {
+            name : 'staticAccelerationMove',
+            settings : {
+                moveData: {
+                    speed: 5,
+                    acceleration: 0.5,
+                },
+                zone: { //TODO rename
+                    type: 'angles', //rotationrate, acceleration, angles
+                    vertical: [5,25],
+                    horizontal: [-15,15], /*
+                    type: 'acceleration',
+                    vertical: [-1,1],
+                    horizontal: [-1,1] */
+                }
+            }
+        };
+    
+    var my_elements = document.getElementsByClassName("elem");
+    
+    var my_callback = function (element) {
+        element.style["background-color"] = 'green';
+    }
+    
+    var ball = plugin.TwoDimensionalTilt('my_class', container, moveType, false, my_elements, my_callback);
+</script>
+     <p id="description">
+        This movement type is similar to 'constant move' but with the difference that it accelerates over time with the one acceleration specified by the user. </br> Setting it to zero would be equivalent to the 'constant move'. Since this movement also doesn't differ the speed for the horizontal and vertical direction it is not possible to move in curves. However, with the right settings this movement should be sufficiently user friendly.
+    </p>
+</body>
+</html>

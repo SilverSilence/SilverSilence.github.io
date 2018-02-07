@@ -1,0 +1,79 @@
+<html hola_ext_inject="disabled"><head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.4, maximum-scale=0.4, user-scalable=no">
+<title> Ball 2d BalanceBoard </title>
+    <title>Ball 2d BalanceBoard</title>
+<script src="../../Controller.js"></script>
+<script src="../../classedMoveTypes.js"></script>    
+<script src="../../TaT_Plugin.js"></script>
+<link rel="stylesheet" type="text/css" href="style_ball2d.css">
+</head>
+    
+<style>
+    .my_class {  
+        width : 50px; 
+        height: 50px;
+        background-color: red;
+        border-radius: 100%;
+        left: 50%;
+        top : 50%;
+        position: absolute;
+    }
+</style>
+<body>
+
+    <div id="container">
+        <div id="elem1" class="elem"></div>
+        <div id="elem2" class="elem"></div>
+        <div id="elem3" class="elem"></div>
+        <div id="elem5" class="elem"></div>
+        <div id="elem6" class="elem"></div>
+    </div>
+    
+<script>
+    var css = {  
+        "width" : "50px", 
+        "height": "50px",
+        "background-color": "red",
+        "border-radius": "100%",
+        left: "50%",
+        top : "50%",
+        position: "absolute",
+    };
+    
+    var container = document.getElementById("container");
+    var plugin = new TiltAndTap();
+    var moveType = 
+        {
+            name : 'balanceBoardMove',
+            settings : {
+                zone: { //TODO rename
+                    type: 'angles', //rotationrate, acceleration, angles
+                    vertical: [-10,10],
+                    horizontal: [-20,20], /*
+                    type: 'acceleration',
+                    vertical: [-1,1],
+                    horizontal: [-1,1] */
+                }
+            }
+        };
+    
+    var my_elements = document.getElementsByClassName("elem");
+    
+    var my_callback = function (element) {
+        element.style["background-color"] = 'green';
+    }
+    
+    var my_exit = function (element) {
+        element.style["background-color"] = 'blue';
+    } 
+    
+    var ball = plugin.TwoDimensionalTilt("my_class2", container, moveType, false, my_elements, my_callback, my_exit);
+</script>
+    <p id="description">
+        This movement takes the angles of the device as the current speed for each direction respectively. It applies
+        a certain correction to the vertical speed because it is not assumed that the standard position is lying flat. An 'acceleration' is thus achieved by increasing the angle. However, holding
+        the device in a certain angle will not accelerate the ball any further.
+    </p>
+</body>
+</html>

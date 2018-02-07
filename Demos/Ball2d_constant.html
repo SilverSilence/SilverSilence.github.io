@@ -1,0 +1,90 @@
+<html hola_ext_inject="disabled"><head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.4, maximum-scale=0.4, user-scalable=no">
+<title> Ball 2d Constant </title>
+    <title>Ball 2d Constant</title>
+<script type="text/javascript" src="Controller.js"></script>
+<script type="text/javascript" src="classedMoveTypes.js"></script>    
+<script type="text/javascript" src="TaT_Plugin.js"></script>
+<link rel="stylesheet" type="text/css" href="style_ball2d.css">
+</head>
+    
+<style>
+    .my_class {  
+        width : 50px; 
+        height: 50px;
+        background-color: red;
+        border-radius: 100%;
+        left: 50%;
+        top : 50%;
+        position: absolute;
+    }
+</style>
+<body>
+
+    <div id="container">
+        <div id="elem1" class="elem"></div>
+        <div id="elem2" class="elem"></div>
+        <div id="elem3" class="elem"></div>
+        <div id="elem4" class="elem"></div>
+    </div>
+    
+<script>
+    var container = document.getElementById("container");
+    var plugin = new TiltAndTap();
+    
+//    var moveType = 
+//        {
+//            name : 'constantMove',
+//            settings : {
+//                moveData: {
+//                    speed: 5,
+//                },
+//                zone: {
+//                    type: 'angles',
+//                    vertical: [-10,10],
+//                    horizontal: [-15,15]
+//                }
+//            }
+//        };
+//    
+    
+//    var moveType =
+//        {
+//            name : 'balanceBoardMove',
+//            settings : {
+//                moveData : {},
+//                zone: {
+//                    type: 'angles',
+//                    vertical: [-15,15],
+//                    horizontal: [-20,20]
+//                }
+//            }
+//        }
+    
+    var moveType = 
+        {
+            name : 'mappedContainerMove',
+            settings : {
+                zone: {
+                    type: 'angles',
+                    vertical: [-15,15],
+                    horizontal: [-20,20]
+                }
+            }
+        }
+    
+    var my_elements = document.getElementsByClassName("elem");
+    
+    var enter_callback = function (element) {
+        element.style["background-color"] = 'green';
+    }
+    
+    var exti_callback = function(element) {
+        element.style["background-color"] = "aqua";
+    }
+    
+    var ball = plugin.TwoDimensionalTilt('my_class', container, moveType, true, my_elements, enter_callback, exti_callback);
+</script>
+</body>
+</html>

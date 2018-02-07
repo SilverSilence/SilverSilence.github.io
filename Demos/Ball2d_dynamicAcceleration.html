@@ -1,0 +1,71 @@
+<html hola_ext_inject="disabled"><head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.4, maximum-scale=0.4, user-scalable=no">
+<title> Ball 2d Dynamic Acceleration </title>
+    <title>Ball 2d Dynamic Acceleration</title>
+<script src="../../Controller.js"></script>
+<script src="../../classedMoveTypes.js"></script>    
+<script src="../../TaT_Plugin.js"></script>
+<link rel="stylesheet" type="text/css" href="style_TwoDimensionalTilt.css">
+</head>
+    
+<style>
+    .my_class {  
+        width : 50px; 
+        height: 50px;
+        background-color: red;
+        border-radius: 100%;
+        left: 50%;
+        top : 50%;
+        position: absolute;
+    }
+</style>
+<body>
+
+    <div id="container">
+        <div id="elem1" class="elem"></div>
+        <div id="elem2" class="elem"></div>
+        <div id="elem3" class="elem"></div>
+        <div id="elem5" class="elem"></div>
+        <div id="elem6" class="elem"></div>
+    </div>
+    
+<script>
+    var container = document.getElementById("container");
+    var plugin = new TiltAndTap();
+    var moveType = 
+        {
+            name : 'dynamicAccelerationMove',
+            settings : {
+                moveData: {
+                    speed: 5,
+                    acceleration: 0,
+                    accelerationType: 'acceleration'
+                },
+                zone: {
+                    type: 'angles', //rotationrate, acceleration, angles
+                    vertical: [5,25],
+                    horizontal: [-15,15],
+                }
+            }
+        };
+    
+    var my_elements = document.getElementsByClassName("elem");
+    
+    var my_callback = function (element) {
+        element.style["background-color"] = 'green';
+    }
+    
+    var ball = plugin.TwoDimensionalTilt('my_class', container, moveType, false, my_elements, my_callback);
+</script>
+     <p id="description">
+        Unlike 'static acceleration' the dynamic type allows to specify a desired acceleration
+        which will be continuosly be added to the speed for as long as you're outside the 'zone'.
+        The ball gets very fast very quickly. It is that not very useful for general purposes,  especially when it comes to tasks where short and precise movements are required.
+    </p>
+    <p>
+        It would probably a useful setting to either limit the speed or to apply a 'friction' coefficient to decrease the effect of the acceleration into something more userfriendly.
+        But at the moment, both of these options aren't implemented. If they were, it is yet to be considered, if that wouldn't allow for a completely new movement type instead?
+    </p>
+</body>
+</html>

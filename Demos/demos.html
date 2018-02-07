@@ -1,0 +1,121 @@
+<html hola_ext_inject="disabled"><head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.4, maximum-scale=0.4, user-scalable=no">
+<title>Task</title>
+    <title>Task</title>
+    <script src="classedMoveTypes.js"></script>
+    <script src="Controller.js"></script>
+    <script src="TaT_Plugin.js"></script>
+<link rel="stylesheet" type="text/css" href="task.css">
+</head>
+
+<style>
+    .my_class {
+        width : 50px;
+        height: 50px;
+        background-color: red;
+        border-radius: 100%;
+        left: 50%;
+        top : 50%;
+        position: absolute;
+        z-index: 10;
+    }
+</style>
+<body>
+
+    <div id="container">
+        <div id="center" class="elem" style="background-color: orange"></div>
+        <div id="elem7" class="elem"></div>
+        <div id="elem6" class="elem"></div>
+        <div id="elem5" class="elem"></div>
+        <div id="elem4" class="elem"></div>
+        <div id="elem3" class="elem"></div>
+        <div id="elem2" class="elem"></div>
+        <div id="elem1" class="elem"></div>
+    </div>
+<script>
+    
+    function getSearchParameters() {
+        var prmstr = window.location.search.substr(1);
+        return prmstr != null && prmstr != "" ? transformToAssocArray(prmstr) : {};
+    };
+
+    function transformToAssocArray( prmstr ) {
+        var params = {};
+        var prmarr = prmstr.split("&");
+        for ( var i = 0; i < prmarr.length; i++) {
+            var tmparr = prmarr[i].split("=");
+            params[tmparr[0]] = tmparr[1];
+        }
+        return params;
+    };
+
+    var params = getSearchParameters();
+    
+    var moveType = params["movement"];
+    
+    var center = document.getElementById("center");
+    center.style.left = container.clientWidth/2 - center.clientWidth/2 + "px";
+    center.style.top = container.clientHeight/2 - center.clientHeight/2 + "px";
+
+    switch(moveType) {
+        case "constantMove":
+            moveType = {
+                name: "constantMove",
+                settings: {
+                    moveData : { speed: 7 },
+                    zone: {
+                        type: "angles",
+                        vertical: [-15,15],
+                        horizontal: [-20,20]
+                    }
+                }
+            };
+            break;
+        case "mappedContainer":
+            moveType = {
+                name: "mappedContainerMove",
+                settings : {
+                    zone: {
+                        type: "angles",
+                        vertical: [-15,15],
+                        horizontal: [-20,20]
+                    }
+                }
+            };
+            break;
+        case "balanceBoard":
+            moveType = {
+                name : 'balanceBoardMove',
+                settings : {
+//                    moveData : {},
+                    zone: {
+                        type: 'angles',
+                        vertical: [-15,15],
+                        horizontal: [-20,20]
+                    }
+                }
+            };
+            break;
+        default:
+            alert("No movetype specified. Please enter a number.");
+    };
+
+    //...........................................
+    var my_elements = document.getElementsByClassName("elem");
+
+
+    var enterCallback = function(element) {
+        element.style.background = "yellow";
+    };
+
+    var exitCallback = function(element) {
+       element.style.background = "aqua";
+    };
+
+    var plugin = new TiltAndTap();
+
+    plugin.TwoDimensionalTilt('my_class', container, moveType, null, my_elements, enterCallback, exitCallback);
+</script>
+</body>
+</html>
