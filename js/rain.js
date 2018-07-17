@@ -9,9 +9,11 @@ function setup() {
         drops.push(drop);
     }
     frameRate(60);
+    console.log("here");
 }
 
 function draw() {
+    console.log("drawing");
     background(0);
     for(var i = 0; i < drops.length; i++) {
         drops[i].display();
