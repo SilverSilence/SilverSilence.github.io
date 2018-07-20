@@ -34,12 +34,6 @@
     </div>
     <div class="show_off_container">
         <div class="separator"></div>
-        <h2>Image Slider</h2>
-        <div class="slider">
-            <img class="slide" src="resources/images/slide_show/7.jpg">
-        </div>
-        <script src="js/slider.js"></script>
-        <div class="separator"></div>
         <h2>Fibonacci Clock</h2>
         <div class="fibonacci_clock">
             <div class="clock_item size_one first_area"></div>
@@ -59,39 +53,13 @@
         </aside>
         <script src="js/fibonacci_clock.js"></script>
         <div class="separator"></div>
-        <h2>Play A Game Of Snake</h2>
-        <div class="snake_wrapper">
-            <div class="snake_container">
-                    <button id="start_snake">Begin Game
-                        <br>(Use Arrow Keys)
-                    </button>
-            </div>
-        </div>
-        <script src="js/snake.js"></script>
+        <h2><a href="/Snake">Play A Game Of Snake</a></h2>
         <div class="separator"></div>
-        <h2>Play a Game Of Flappy Bird</h2>
-        <div class="flappy_bird_wrapper">
-            <div class="flappy_bird_container">
-                <button id="start_flappy">Begin Game
-                    <br>(Use Space Bar)
-                </button>
-                <canvas id="world" width="1000" height="800"></canvas>
-            </div>
-        </div>
-        <script src="js/flappy.js"></script>
+        <h2><a href="/FlappyBird">Play A Game Of Flappy Bird</a></h2>
         <div class="separator"></div>
-        <h2>Rain Simulation</h2>
-        <a style="text-align: center; font-size: 2em;" href="/RainSimulation">Visit this page to see the simulation.</a>
+        <h2><a href="/RainSimulation">Rain Simulation</a></h2>
+        <div class="separator"></div>
     </div>
-        <script>
-            //Desktop Controls (Note: real ugly solution)
-            document.onkeydown = function(e) {
-                e = e || window.event;
-                snakeControl(e);
-                flappyControls(e);
-            };
-        </script>
-        <div class="separator"></div>
         <footer>
             <nav>
                 Contact Me at: gandora2@gmail.com
